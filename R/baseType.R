@@ -7,6 +7,8 @@ as_baseType <- function(x){
 
 #' @export
 as_baseType.default <- function(x){
+
+  if(is_Dat(x)) return(as.Date(x))
   vctrs::vec_data(x)
 }
 
