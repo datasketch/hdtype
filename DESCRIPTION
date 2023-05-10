@@ -1,0 +1,31 @@
+Package: hdTypes
+Title: Homodatum types
+Version: 0.0.1
+Authors@R: 
+    person(given = "Juan Pablo",
+           family = "Marin Diaz",
+           role = c("aut", "cre"),
+           email = "jpmarindiaz@gmail.com")
+Description: Vector definitions for abstract data types
+URL: https://github.com/datasketch/hdTypes
+License: MIT + file LICENSE
+Encoding: UTF-8
+BugReports: https://github.com/datasketch/hdTypes/issues
+Depends:
+    R (>= 4.2),
+    vctrs
+Imports: 
+    tibble,
+    dplyr,
+    lubridate,
+    magrittr (>= 1.5),
+    dstools (>= 0.1.0),
+    makeup,
+    readr,
+    purrr,
+    geodato
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
