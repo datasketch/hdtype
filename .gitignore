@@ -20,7 +20,7 @@ vignettes/*.pdf
 
 #*.Rproj
 .Rproj.user
-homodatum.Rcheck/
-homodatum*.tar.gz
+hdTypes.Rcheck/
+hdTypes*.tar.gz
 homodatum*.tgz
 docs
