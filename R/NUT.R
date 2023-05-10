@@ -7,7 +7,7 @@ new_NUT <- function(x = character(), na_str = NA){
 }
 
 
-#' @title UnknownType Vectors
+#' @title Null Type Vectors
 #' @description Creates objects of type "hd_NUT". Usually for NA vectors
 #'
 #' @param x object to be created as NUT type
