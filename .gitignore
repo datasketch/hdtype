@@ -22,5 +22,5 @@ vignettes/*.pdf
 .Rproj.user
 hdTypes.Rcheck/
 hdTypes*.tar.gz
-homodatum*.tgz
+hdTypes*.tgz
 docs
