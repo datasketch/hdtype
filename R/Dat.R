@@ -90,8 +90,8 @@ is_Dat <- function(x) {
 # Methods
 
 ## Format method
-Dat_get_format <- function(x) attr(x, "format")
-Dat_get_order <- function(x) attr(x, "order")
+Dat_get_format <- function(x) attr(x, "format")$date_format
+Dat_get_order <- function(x) attr(x, "format")$date_order
 
 Dat_show <- function(x, format = NULL){
   if(all(is.na(x))) return(sprintf(fmt = "%s", as.character(x)))
@@ -230,13 +230,13 @@ as_Dat <- function(x) {
 #' @export
 Dat_get_format <- function(x){
   if(!is_Dat(x)) stop("x must be a Dat")
-  attr(x, "format")
+  attr(x, "format")$date_format
 }
 
 #' @export
 Dat_get_order <- function(x){
   if(!is_Dat(x)) stop("x must be a Dat")
-  attr(x, "order")
+  attr(x, "format")$date_order
 }
 
 

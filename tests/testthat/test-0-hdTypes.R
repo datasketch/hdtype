@@ -4,12 +4,11 @@ test_that("create hdTypes",{
   library(readr)
 
   # TODO still need void ctype?
-  # void =tibble::tibble(col1 = character(0), col2 = character(0))
-  # expect_equal(guessCtype(void[1]),"___")
-  # expect_equal(guessCtype(void %>% .[[1]]),"___")
-  # expect_equal(guessCtypes(void),c("___","___"))
-  # guessCformats(void)
+  x <- character(0)
+  expect_equal(guess_hdType(x),hdType("NUT"))
 
+  x <- NA
+  expect_equal(guess_hdType(x),hdType("UKT"))
 
 
   # expect_true(inherits(c(hdType("Num"), "Cat"),"hdType"))

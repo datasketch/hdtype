@@ -9,7 +9,7 @@ test_that("Cat", {
   expect_equal(attr(cats,"stats")$summary$category, unique(x))
   expect_equal(attr(cats,"stats")$summary$n[2], 2)
   expect_equal(attr(cats,"stats")$n_unique, 3)
-  expect_equal(attr(cats,"n_categories"), 3)
+  expect_equal(attr(cats,"format")$n_categories, 3)
 
   # TODO add option to TRIM (spaces, etc) Cats, and to regroup/refactor
 

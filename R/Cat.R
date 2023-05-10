@@ -22,7 +22,7 @@ new_Cat <- function(x = character(), categories = NULL,
                                           sample = default_spec)
 
   vctrs::new_vctr(x,
-                  format = list(categories = categories,
+                  format = list(categories = unname(categories),
                             n_categories = length(categories),
                             spec = default_spec,
                             labels = names(categories)),
@@ -148,13 +148,13 @@ as_Cat <- function(x) {
 #' @export
 Cat_get_categories <- function(x){
   if(!is_Cat(x)) stop("x must be a Cat")
-  attr(x, "categories")
+  attr(x, "format")$categories
 }
 
 #' @export
 Cat_get_n_categories <- function(x){
   if(!is_Cat(x)) stop("x must be a Cat")
-  attr(x, "n_categories")
+  attr(x, "format")$n_categories
 }
 
 #' @export

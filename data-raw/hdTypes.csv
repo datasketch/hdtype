@@ -1,5 +1,6 @@
 id,label,weight
-___,Null,1
+NUT,Null,0
+UKT,Unknown,0
 Uid,Uid,1
 Cat,Categorical,5
 Bin,Binary,3

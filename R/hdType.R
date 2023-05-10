@@ -75,7 +75,7 @@ which_hdType <- function(x){
   if(is_any_hdType(x)){
     gsub("hd_","",class(x)[grep("hd_", class(x))])
   } else {
-    cat("The value is not a valid hdType")
+    warning("The value is not a valid hdType")
   }
 }
 

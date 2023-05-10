@@ -30,9 +30,15 @@ guess_hdType <- function(v){
     return(hdType(which_hdType(v)))
   }
 
+  if(length(v) == 0){
+    return(hdType("NUT"))
+  }
+  if(all(is.na(v))){
+    return(hdType("UKT"))
+  }
+
   v <- unique(v[!is.na(v)])
-  if(length(v) == 0)
-    return(hdType("___"))
+
 
   if(any(class(v) %in% c("integer","numeric"))){
     hdType <- hdType("Num")
