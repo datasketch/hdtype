@@ -18,9 +18,6 @@ test_that("create hdTypes",{
   expect_true(inherits(c(hdType("Num"), hdType("Cat")),"hdType"))
 
 
-
-
-
   # Data Frames
 
   # data <-tibble::tibble(a = as.Date(c("2016-04-03", "2016-05-04")),
@@ -56,6 +53,26 @@ test_that("create hdTypes",{
   #expect_false("___" %in% availableCtypeIds(allowEmpty = FALSE))
 
 })
+
+test_that("All hdTypes have format and stats",{
+
+  avhdts <- available_hdTypes()
+
+  #class(get("Pct_format"))
+
+  get_format_funs <- paste0(avhdts, "_format")
+  all_funs <- purrr::map_chr(get_format_funs, ~ class(get(.)))
+  expect_true(unique(all_funs) == "function")
+
+  get_stats_funs <- paste0(avhdts, "_stats")
+  all_funs <- purrr::map_chr(get_stats_funs, ~ class(get(.)))
+  expect_true(unique(all_funs) == "function")
+
+
+})
+
+
+
 
 
 # test_that("Cast hdType",{

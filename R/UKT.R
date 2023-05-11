@@ -133,7 +133,13 @@ as_UKT <- function(x) {
 
 
 #' @export
-UKT_get_stats <-  function(x){
+UKT_format <-  function(x){
+  if(!is_UKT(x)) stop("x must be a Dat")
+  NULL
+}
+
+#' @export
+UKT_stats <-  function(x){
   if(!is_UKT(x)) stop("x must be a Dat")
   NULL
 }

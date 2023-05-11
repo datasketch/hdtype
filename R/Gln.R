@@ -88,7 +88,13 @@ as.character.hd_Gln <- function(x) as.character(vec_data(x))
 
 
 #' @export
-Gln_get_stats <-  function(x){
+Gln_format <-  function(x){
+  if(!is_Gln(x)) stop("x must be a Cat")
+  attr(x, "format")
+}
+
+#' @export
+Gln_stats <-  function(x){
   if(!is_Gln(x)) stop("x must be a Cat")
   attr(x, "stats")
 }

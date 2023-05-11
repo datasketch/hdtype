@@ -120,7 +120,14 @@ Gcd_get_n_categories <- function(x){
 }
 
 #' @export
-Gcd_get_stats <-  function(x){
+Gcd_format<-  function(x){
+  if(!is_Gcd(x)) stop("x must be a Gcd")
+  attr(x, "format")
+}
+
+
+#' @export
+Gcd_stats <-  function(x){
   if(!is_Gcd(x)) stop("x must be a Gcd")
   attr(x, "stats")
 }

@@ -49,8 +49,25 @@ vec_cast.hd_Uid.hd_Uid <- function(x, to, ...) x
 vec_cast.hd_Uid.character <- function(x, to, ...) percent(x)
 vec_cast.character.hd_Uid <- function(x, to, ...) vctrs::vec_data(x)
 
+
+#' @export
 as_Uid <- function(x) {
   vctrs::vec_cast(x, new_Uid())
 }
+
+
+#' @export
+Uid_format <-  function(x){
+  if(!is_Uid(x)) stop("x must be a Uid")
+  attr(x, "format")
+}
+
+#' @export
+Uid_stats <-  function(x){
+  if(!is_Uid(x)) stop("x must be a Uid")
+  attr(x, "stats")
+}
+
+
 
 

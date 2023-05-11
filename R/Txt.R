@@ -81,9 +81,14 @@ as_Txt <- function(x) {
 }
 
 
+#' @export
+Txt_format <-  function(x){
+  if(!is_Txt(x)) stop("x must be a Txt")
+  attr(x, "format")
+}
 
-
-Txt_get_stats <-  function(x){
+#' @export
+Txt_stats <-  function(x){
   if(!is_Txt(x)) stop("x must be a Txt")
   attr(x, "stats")
 }

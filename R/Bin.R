@@ -122,8 +122,15 @@ Bin_get_n_categories <- function(x){
   attr(x, "n_categories")
 }
 
+
 #' @export
-Bin_get_stats <-  function(x){
+Bin_format <-  function(x){
+  if(!is_Bin(x)) stop("x must be a Bin")
+  attr(x, "format")
+}
+
+#' @export
+Bin_stats <-  function(x){
   if(!is_Bin(x)) stop("x must be a Bin")
   attr(x, "stats")
 }

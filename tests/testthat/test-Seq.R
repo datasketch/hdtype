@@ -28,7 +28,7 @@ test_that("Seq", {
 
   ## TODO check order has the same type as categories
 
-  stats <- Seq_get_stats(x)
+  stats <- Seq_stats(x)
   expect_equal(stats$n[1:2], as.vector(table(x)))
 
   a <- data.frame(myseqs = Seq(c("black", "white")), value = 1:2)

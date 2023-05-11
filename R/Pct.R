@@ -138,9 +138,14 @@ as_Pct <- function(x) {
   vctrs::vec_cast(x, new_Pct())
 }
 
+#' @export
+Pct_format <-  function(x){
+  if(!is_Pct(x)) stop("x must be a Pct")
+  attr(x, "format")
+}
 
 #' @export
-Pct_get_stats <-  function(x){
+Pct_stats <-  function(x){
   if(!is_Pct(x)) stop("x must be a Pct")
   attr(x, "stats")
 }

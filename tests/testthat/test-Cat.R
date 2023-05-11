@@ -38,7 +38,7 @@ test_that("Cat", {
   x <- Cat(c(1,1,2,2,3,3))
   expect_equal(Cat_get_categories(x),c("1","2","3"))
   expect_equal(Cat_get_n_categories(x), 3)
-  stats <- Cat_get_stats(x)
+  stats <- Cat_stats(x)
   expect_equal(stats$summary$n[1:3], as.vector(table(x)))
 
   a <- data.frame(mycats = Cat(c("black", "white")), value = 1:2)

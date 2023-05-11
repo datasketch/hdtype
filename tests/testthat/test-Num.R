@@ -7,8 +7,8 @@ test_that("Num",{
   x <- new_Num(c(seq(0, 1, length.out = 4), NA))
   x
   str(x)
-  expect_equal(Num_get_stats(x)$min, 0)
-  expect_equal(Num_get_stats(x)$max, 1)
+  expect_equal(Num_stats(x)$min, 0)
+  expect_equal(Num_stats(x)$max, 1)
 
   vec_ptype2(new_Num(1), new_Num(3))
 

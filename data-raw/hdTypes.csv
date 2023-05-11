@@ -1,30 +1,34 @@
-id,label,weight
-NUT,Null,0
-UKT,Unknown,0
-Uid,Uid,1
-Cat,Categorical,5
-Bin,Binary,3
-Seq,Sequential,3
-Num,Numeric,5
-Pct,Percentage,2
-Dst,Distribution,2
-Dat,Date,5
-Yea,Year,1
-Mon,Month,1
-Day,Day,1
-Wdy,Day of week,1
-Ywe,Week in year,1
-Dtm,Date time,1
-Hms,Time HMS,1
-Min,Minutes,1
-Sec,Seconds,1
-Hie,Hierarchy,1
-Grp,Group,1
-Txt,Text,1
-Mny,Money,1
-Gnm,Geo name,1
-Gcd,Geo code,1
-Glt,Geo latitude,1
-Gln,Geo longitude,1
-Img,Image,1
-Aud,Audio,1
+id,label,weight,implemented
+NUT,Null,0,1
+UKT,Unknown,0,1
+Uid,Uid,1,1
+Cat,Categorical,5,1
+Bin,Binary,3,1
+Seq,Sequential,3,1
+Num,Numeric,5,1
+Pct,Percentage,2,1
+Dst,Distribution,2,0
+Dat,Date,5,1
+Yea,Year,1,1
+Mon,Month,1,0
+Day,Day,1,0
+Wdy,Day of week,1,0
+Ywe,Week in year,1,0
+Dtm,Date time,1,0
+Hms,Time HMS,1,0
+Min,Minutes,1,0
+Sec,Seconds,1,0
+Hie,Hierarchy,1,0
+Grp,Group,1,0
+Txt,Text,1,1
+Cur,Currency,1,0
+Gnm,Geo name,1,1
+Gcd,Geo code,1,1
+Glt,Geo latitude,1,1
+Gln,Geo longitude,1,1
+Img,Image,1,1
+Aud,Audio,1,0
+Vid,Video,1,0
+Ctr,Country,1,0
+Emj,Emoji,1,0
+Rtn,Rating,1,0

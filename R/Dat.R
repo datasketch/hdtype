@@ -241,7 +241,13 @@ Dat_get_order <- function(x){
 
 
 #' @export
-Dat_get_stats <-  function(x){
+Dat_format <-  function(x){
+  if(!is_Dat(x)) stop("x must be a Dat")
+  attr(x, "format")
+}
+
+#' @export
+Dat_stats <-  function(x){
   if(!is_Dat(x)) stop("x must be a Dat")
   attr(x, "stats")
 }

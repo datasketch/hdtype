@@ -86,9 +86,14 @@ as_Glt <- function(x) {
 }
 
 
+#' @export
+Glt_format <-  function(x){
+  if(!is_Glt(x)) stop("x must be a Cat")
+  attr(x, "format")
+}
 
 #' @export
-Glt_get_stats <-  function(x){
+Glt_stats <-  function(x){
   if(!is_Glt(x)) stop("x must be a Cat")
   attr(x, "stats")
 }

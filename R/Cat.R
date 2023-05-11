@@ -157,8 +157,15 @@ Cat_get_n_categories <- function(x){
   attr(x, "format")$n_categories
 }
 
+
 #' @export
-Cat_get_stats <-  function(x){
+Cat_format <-  function(x){
+  if(!is_Cat(x)) stop("x must be a Cat")
+  attr(x, "format")
+}
+
+#' @export
+Cat_stats <-  function(x){
   if(!is_Cat(x)) stop("x must be a Cat")
   attr(x, "stats")
 }

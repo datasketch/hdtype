@@ -134,7 +134,13 @@ as_NUT <- function(x) {
 
 
 #' @export
-NUT_get_stats <-  function(x){
+NUT_format <-  function(x){
+  if(!is_NUT(x)) stop("x must be a Dat")
+  NULL
+}
+
+#' @export
+NUT_stats <-  function(x){
   if(!is_NUT(x)) stop("x must be a Dat")
   NULL
 }

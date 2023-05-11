@@ -42,8 +42,8 @@ test_that("Gnm, Gcd, Gln, Glt", {
   x <- new_Glt(c(seq(0, 1, length.out = 4), NA))
   x
   str(x)
-  expect_equal(Glt_get_stats(x)$min, 0)
-  expect_equal(Glt_get_stats(x)$max, 1)
+  expect_equal(Glt_stats(x)$min, 0)
+  expect_equal(Glt_stats(x)$max, 1)
   expect_equivalent(vctrs::vec_cast(x, double()), c(seq(0, 1, length.out = 4), NA))
 
   expect_error(Glt(100))
@@ -51,8 +51,8 @@ test_that("Gnm, Gcd, Gln, Glt", {
   # Gln
   x <- new_Gln(c(seq(0, 1, length.out = 4), NA))
 
-  expect_equal(Gln_get_stats(x)$min, 0)
-  expect_equal(Gln_get_stats(x)$max, 1)
+  expect_equal(Gln_stats(x)$min, 0)
+  expect_equal(Gln_stats(x)$max, 1)
   expect_equivalent(vctrs::vec_cast(x, double()), c(seq(0, 1, length.out = 4), NA))
 
   expect_error(Gln(200))

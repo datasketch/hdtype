@@ -97,6 +97,20 @@ as_Img <- function(x) {
   vctrs::vec_cast(x, new_Img())
 }
 
+#' @export
+Img_format <-  function(x){
+  if(!is_Pct(x)) stop("x must be a Pct")
+  attr(x, "format")
+}
+
+#' @export
+Img_stats <-  function(x){
+  if(!is_Pct(x)) stop("x must be a Pct")
+  attr(x, "stats")
+}
+
+
+
 
 has_img_ext <- function(x){
 

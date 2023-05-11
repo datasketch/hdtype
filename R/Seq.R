@@ -107,7 +107,15 @@ Seq_get_n_categories <- function(x){
   attr(x, "n_categories")
 }
 
-Seq_get_stats <-  function(x){
+
+#' @export
+Seq_format <-  function(x){
+  if(!is_Seq(x)) stop("x must be a Seq")
+  attr(x, "format")
+}
+
+#' @export
+Seq_stats <-  function(x){
   if(!is_Seq(x)) stop("x must be a Seq")
   attr(x, "stats")
 }

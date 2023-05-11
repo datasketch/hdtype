@@ -110,7 +110,14 @@ as_Yea <- function(x) {
 
 
 #' @export
-Yea_get_stats <-  function(x){
+Yea_format <-  function(x){
+  if(!is_Yea(x)) stop("x must be a Yea")
+  attr(x, "format")
+}
+
+
+#' @export
+Yea_stats <-  function(x){
   if(!is_Yea(x)) stop("x must be a Yea")
   attr(x, "stats")
 }

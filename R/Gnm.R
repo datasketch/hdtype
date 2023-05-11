@@ -120,7 +120,13 @@ Gnm_get_n_categories <- function(x){
 }
 
 #' @export
-Gnm_get_stats <-  function(x){
+Gnm_format <-  function(x){
+  if(!is_Gnm(x)) stop("x must be a Gnm")
+  attr(x, "format")
+}
+
+#' @export
+Gnm_stats <-  function(x){
   if(!is_Gnm(x)) stop("x must be a Gnm")
   attr(x, "stats")
 }

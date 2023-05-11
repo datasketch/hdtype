@@ -136,9 +136,14 @@ as_Num <- function(x) {
 }
 
 
+#' @export
+Num_format <-  function(x){
+  if(!is_Num(x)) stop("x must be a Num")
+  attr(x, "format")
+}
 
 #' @export
-Num_get_stats <-  function(x){
+Num_stats <-  function(x){
   if(!is_Num(x)) stop("x must be a Num")
   attr(x, "stats")
 }

@@ -34,7 +34,7 @@ test_that("Bin", {
 
   expect_equal(Bin_get_categories(x),c("1","2"))
   expect_equal(Bin_get_n_categories(x), 2)
-  stats <- Bin_get_stats(x)
+  stats <- Bin_stats(x)
   expect_equal(stats$n[1:2], as.vector(table(x)))
 
   a <- data.frame(mybins = Bin(c("black", "white")), value = 1:2)
