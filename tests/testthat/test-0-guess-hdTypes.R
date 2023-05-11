@@ -23,6 +23,12 @@ test_that("Test guess", {
   expect_equal(guess_hdType(v), hdType("Num"))
 
   # Guess Pct
+
+  expect_equal(guess_hdType(1), hdType("Num"))
+  expect_equal(guess_hdType(c(0, 1, 0)), hdType("Num"))
+  expect_equal(guess_hdType(c(0.3, 2, 0)), hdType("Num"))
+
+  expect_equal(guess_hdType(c(0.3, 1, 0)), hdType("Pct"))
   expect_equal(guess_hdType(c(0.3, 0.4, 1)), hdType("Pct"))
   expect_equal(guess_hdType(c("30%", "200%", NA)), hdType("Pct"))
 
