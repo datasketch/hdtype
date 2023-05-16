@@ -1,21 +1,21 @@
 
-test_that("create hdTypes",{
+test_that("create hdtypes",{
 
   library(readr)
 
   # TODO still need void ctype?
   x <- character(0)
-  expect_equal(guess_hdType(x),hdType("NUT"))
+  expect_equal(guess_hdtype(x),hdtype("NUT"))
 
   x <- NA
-  expect_equal(guess_hdType(x),hdType("UKT"))
+  expect_equal(guess_hdtype(x),hdtype("UKT"))
 
 
-  # expect_true(inherits(c(hdType("Num"), "Cat"),"hdType"))
-  expect_true(inherits(c(hdType("Num"), "Cat"),"character"))
+  # expect_true(inherits(c(hdtype("Num"), "Cat"),"hdtype"))
+  expect_true(inherits(c(hdtype("Num"), "Cat"),"character"))
   ## TODO check coercion rules
-  expect_true(inherits(c("Num", hdType("Cat")),"character"))
-  expect_true(inherits(c(hdType("Num"), hdType("Cat")),"hdType"))
+  expect_true(inherits(c("Num", hdtype("Cat")),"character"))
+  expect_true(inherits(c(hdtype("Num"), hdtype("Cat")),"hdtype"))
 
 
   # Data Frames
@@ -25,7 +25,7 @@ test_that("create hdTypes",{
   #                    c = as.factor(c("2016-04-03", "2016-05-04")))
   # expect_true(all(purrr::map_lgl(data,isDate)))
 
-  # expect_equal(unname(unique(vctrs::vec_c(!!!purrr::map(data,guess_hdType)))),hdType("Dat"))
+  # expect_equal(unname(unique(vctrs::vec_c(!!!purrr::map(data,guess_hdtype)))),hdtype("Dat"))
 
 
   data <- data.frame(
@@ -36,13 +36,13 @@ test_that("create hdTypes",{
     e = Pct(runif(2))
   )
 
-  expect_true(inherits(guess_hdType(data$a),"hdType"))
+  expect_true(inherits(guess_hdtype(data$a),"hdtype"))
 
   # data <- sample_data("Cat-Dat-Yea-Num-Pct")
-  hdTypes <- c(a = "Cat",b = "Dat", c = "Yea", d = "Num", e = "Pct")
-  expect_equal(purrr::map_chr(data, guess_hdType),hdTypes)
+  hdtypes <- c(a = "Cat",b = "Dat", c = "Yea", d = "Num", e = "Pct")
+  expect_equal(purrr::map_chr(data, guess_hdtype),hdtypes)
 
-  expect_equal(as.character(hdTypes), c("Cat", "Dat", "Yea", "Num", "Pct"))
+  expect_equal(as.character(hdtypes), c("Cat", "Dat", "Yea", "Num", "Pct"))
 
 
   # expect_equal(guessFtype(data),"Cat-Dat-Yea-Num-Pct")
@@ -54,9 +54,9 @@ test_that("create hdTypes",{
 
 })
 
-test_that("All hdTypes have format and stats",{
+test_that("All hdtypes have format and stats",{
 
-  avhdts <- available_hdTypes()
+  avhdts <- available_hdtypes()
 
   #class(get("Pct_format"))
 
@@ -75,29 +75,29 @@ test_that("All hdTypes have format and stats",{
 
 
 
-# test_that("Cast hdType",{
+# test_that("Cast hdtype",{
 #
-#   c(hdType("Num"),"Num")
-#   c("Num", hdType("Num"))
+#   c(hdtype("Num"),"Num")
+#   c("Num", hdtype("Num"))
 #
-#   vctrs::vec_ptype2("Cat", hdType())
-#   vctrs::vec_ptype2(hdType(),"Num")
+#   vctrs::vec_ptype2("Cat", hdtype())
+#   vctrs::vec_ptype2(hdtype(),"Num")
 #
-#   vctrs::vec_ptype_show(hdType(), character(), hdType())
+#   vctrs::vec_ptype_show(hdtype(), character(), hdtype())
 #
-#   vctrs::vec_cast("Num", hdType())
-#   h <- hdType("Cat")
+#   vctrs::vec_cast("Num", hdtype())
+#   h <- hdtype("Cat")
 #   vctrs::vec_data(h)
-#   vctrs::vec_cast(hdType("Cat"), character())
+#   vctrs::vec_cast(hdtype("Cat"), character())
 #
-#   hdType("Cat") == "Cat"
+#   hdtype("Cat") == "Cat"
 #
-#   d <- data.frame(x = hdType(c("Num", "Cat")), y = 1:2)
+#   d <- data.frame(x = hdtype(c("Num", "Cat")), y = 1:2)
 #   #readr::write_csv(d,"test.csv")
 #
 # })
 
-# test_that("write hdTypes",{
+# test_that("write hdtypes",{
 #
 #   data <- data.frame(
 #     a = Cat(c("black", "white")),

@@ -1,80 +1,80 @@
 
-#' @title hdType
-#' @description evaluates which of the available_hdTypes is the object
+#' @title hdtype
+#' @description evaluates which of the available_hdtypes is the object
 #'
 #' @param v a value for which you want to evaluate
 #'
-#' @return An available_hdType value
+#' @return An available_hdtype value
 #'
 #' @examples
 #'
-#' # Num hdType
+#' # Num hdtype
 #' value <- c("1",NA,"2")
-#' guess_hdType(value)
+#' guess_hdtype(value)
 #'
-#' # Cat hdType
+#' # Cat hdtype
 #' value <- c("MSPS-CD-166-2020", "003-2020", "0811 - 2020")
-#' guess_hdType(value)
+#' guess_hdtype(value)
 #'
-#' # Pct hdType
+#' # Pct hdtype
 #' value <- c(0.3, 0.4, 1)
-#' guess_hdType(value)
+#' guess_hdtype(value)
 #'
 #'
 #' @export
-guess_hdType <- function(v){
+guess_hdtype <- function(v){
   # if("data.frame" %in% class(v))
   #   v <- v %>% flatten
 
-  if(is_any_hdType(v)){
-    return(hdType(which_hdType(v)))
+  if(is_any_hdtype(v)){
+    return(hdtype(which_hdtype(v)))
   }
 
   if(length(v) == 0){
-    return(hdType("NUT"))
+    return(hdtype("NUT"))
   }
   if(all(is.na(v))){
-    return(hdType("UKT"))
+    return(hdtype("UKT"))
   }
 
   v <- unique(v[!is.na(v)])
 
 
   if(any(class(v) %in% c("integer","numeric"))){
-    hdType <- hdType("Num")
-    if(all(v %in% 1500L:2200L)) hdType <- hdType("Yea")
-    if(maybePct(v)) hdType <- hdType("Pct")
-    return(hdType)
+    hdtype <- hdtype("Num")
+    if(all(v %in% 1500L:2200L)) hdtype <- hdtype("Yea")
+    if(maybePct(v)) hdtype <- hdtype("Pct")
+    return(hdtype)
   }
   if(any(class(v) == "Date") | any(c("POSIXt", "POSIXct") %in% class(v)))
-    return(hdType("Dat"))
+    return(hdtype("Dat"))
 
   if(class(v)!= "factor" & !has_warning(as.numeric(v))){
-    return(hdType("Num"))
+    return(hdtype("Num"))
   }
 
   #dth <- whichDTH(v)
   # if(!is.null(dth))
-  #   hdType <- hdType(dth)
+  #   hdtype <- hdtype(dth)
   if(isDate(v)){
-    return(hdType("Dat"))
+    return(hdtype("Dat"))
   }
   else{
     v <- as.character(v)
     if(maybeNum(v)){
-      return(hdType("Num"))
+      return(hdtype("Num"))
     }
     if(maybePct(v)){
-      return(hdType("Pct"))
+      return(hdtype("Pct"))
     }
-    hdType <- hdType("Cat")
-    if(hdType == hdType("Cat") && maybeImgUrl(v)){
-      hdType <- hdType("Img")
+    hdtype <- hdtype("Cat")
+    if(hdtype == hdtype("Cat") && maybeImgUrl(v)){
+      hdtype <- hdtype("Img")
     }
-    if(hdType == hdType("Cat") && maybeTxt(v))
-      hdType <- hdType("Txt")
+    if(hdtype == hdtype("Cat") && maybeTxt(v))
+      hdtype <- hdtype("Txt")
   }
-  hdType
+  hdtype
 }
 
 maybeNum <- function(v){

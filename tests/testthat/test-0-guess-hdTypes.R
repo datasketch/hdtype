@@ -4,46 +4,46 @@ test_that("Test guess", {
 
   v <- c("MSPS-CD-166-2020", "003-2020", "0811 - 2020")
   expect_false(isDate(v)) # Test if there are letters
-  expect_equal(guess_hdType(v), hdType("Cat"))
+  expect_equal(guess_hdtype(v), hdtype("Cat"))
 
   v <- c("10306908", "900935265", "9010385043", "9010385043", "9010385043",
          NA, "901046823", "830035101", "900417425-2")
   expect_false(isDate(v)) # Test if many are parsed as NA. 60% failed to parse
-  expect_equal(guess_hdType(v), hdType("Cat"))
+  expect_equal(guess_hdtype(v), hdtype("Cat"))
 
   # Guess Num
-  expect_equal(guess_hdType(c("1",NA,"2")), hdType("Num"))
-  expect_equal(guess_hdType(c(0.3, 2, NA)), hdType("Num"))
+  expect_equal(guess_hdtype(c("1",NA,"2")), hdtype("Num"))
+  expect_equal(guess_hdtype(c(0.3, 2, NA)), hdtype("Num"))
 
   v <- c("4,59", "5,38", "10,78", "123",NA)
-  expect_equal(guess_hdType(v), hdType("Num"))
+  expect_equal(guess_hdtype(v), hdtype("Num"))
 
   v <- c("343.755,08", "5.380,00", NA, "21.555,11", "1.550.000")
   maybeNum(v)
-  expect_equal(guess_hdType(v), hdType("Num"))
+  expect_equal(guess_hdtype(v), hdtype("Num"))
 
   # Guess Pct
 
-  expect_equal(guess_hdType(1), hdType("Num"))
-  expect_equal(guess_hdType(c(0, 1, 0)), hdType("Num"))
-  expect_equal(guess_hdType(c(0.3, 2, 0)), hdType("Num"))
+  expect_equal(guess_hdtype(1), hdtype("Num"))
+  expect_equal(guess_hdtype(c(0, 1, 0)), hdtype("Num"))
+  expect_equal(guess_hdtype(c(0.3, 2, 0)), hdtype("Num"))
 
-  expect_equal(guess_hdType(c(0.3, 1, 0)), hdType("Pct"))
-  expect_equal(guess_hdType(c(0.3, 0.4, 1)), hdType("Pct"))
-  expect_equal(guess_hdType(c("30%", "200%", NA)), hdType("Pct"))
+  expect_equal(guess_hdtype(c(0.3, 1, 0)), hdtype("Pct"))
+  expect_equal(guess_hdtype(c(0.3, 0.4, 1)), hdtype("Pct"))
+  expect_equal(guess_hdtype(c("30%", "200%", NA)), hdtype("Pct"))
 
   # Guess Dat
   # v <- c("2020-04-04", NA)
   # isDate(v)
-  # expect_equal(guess_hdType(v), hdType("Dat"))
+  # expect_equal(guess_hdtype(v), hdtype("Dat"))
   #
   # v <- "24/06/2020"
   # expect_true(isDate(v))
-  # expect_equal(guess_hdType(v), hdType("Dat"))
+  # expect_equal(guess_hdtype(v), hdtype("Dat"))
   #
   # v <- "24/6/2020"
   # expect_true(isDate(v))
-  # expect_equal(guess_hdType(v), hdType("Dat"))
+  # expect_equal(guess_hdtype(v), hdtype("Dat"))
   #
   # h <- Dat(v)
   # attributes(h)$format

@@ -2,9 +2,9 @@
 
 library(tidyverse)
 
-hdTypes <- read_csv("data-raw/hdTypes.csv", show_col_types = FALSE)
+hdtypes <- read_csv("data-raw/hdtypes.csv", show_col_types = FALSE)
 
-hdTypes <- hdTypes |>
+hdtypes <- hdtypes |>
   filter(implemented == 1)
 
-usethis::use_data(hdTypes, overwrite = TRUE, internal = TRUE)
+usethis::use_data(hdtypes, overwrite = TRUE, internal = TRUE)

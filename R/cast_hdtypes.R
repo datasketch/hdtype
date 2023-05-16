@@ -1,6 +1,6 @@
 #'
 #' #' cast_hdtypes
-#' #' Convert hdTypes
+#' #' Convert hdtypes
 #' #' @name cast_hdtypes
 #' #' @param data frame or a fringe.
 #' #' @param from string of hdtypes.

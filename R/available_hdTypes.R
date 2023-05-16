@@ -1,8 +1,8 @@
 
 #' @export
-available_hdTypes <- function(as_character = FALSE){
-  hds <- hdTypes:::hdTypes
+available_hdtypes <- function(as_character = FALSE){
+  hds <- hdtype:::hdtypes
   if(as_character) return(hds$id)
-  hdType(hds$id)
+  hdtype(hds$id)
 
 }

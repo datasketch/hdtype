@@ -28,7 +28,7 @@ test_that("Num",{
   vec_c(Num(0.5), 1)
 
   c(Num(1),1)
-  c("Num", hdType("Num"))
+  c("Num", hdtype("Num"))
 
   vctrs::vec_ptype2(1, Num())
   vctrs::vec_ptype2(Num(),1)
@@ -53,12 +53,12 @@ test_that("Num",{
   as.character(x)
 
   x <- c("4,59", "5,38", "10,78", NA, "2")
-  expect_equal(guess_hdType(x), hdType("Num"))
+  expect_equal(guess_hdtype(x), hdtype("Num"))
   expect_true(has_decimal_comma(x))
   expect_true(is_Num(Num(x)))
 
   x <- c("343.755,08", "5.380,00", NA, "21.555,11", "1.550.000")
-  expect_equal(guess_hdType(x), hdType("Num"))
+  expect_equal(guess_hdtype(x), hdtype("Num"))
   expect_true(has_decimal_comma(x))
   expect_true(is_Num(Num(x)))
 
