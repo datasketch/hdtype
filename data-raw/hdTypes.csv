@@ -7,6 +7,9 @@ Bin,Binary,3,1
 Seq,Sequential,3,1
 Num,Numeric,5,1
 Pct,Percentage,2,1
+Clr,Color,1,1
+Chk,Check,1,1
+Lst,List,0,0
 Dst,Distribution,2,0
 Dat,Date,5,1
 Yea,Year,1,1

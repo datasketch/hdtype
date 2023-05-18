@@ -1,15 +1,32 @@
 
-new_Cat <- function(x = character(), categories = NULL,
+new_Cat <- function(x = character(),
+                    categories = NULL,
+                    spec = NULL,
                     skip_stats = FALSE){
   vctrs::vec_assert(x, character())
-  categories <- categories %||% unique(x[!is.na(x)])
-  nms <- names(x)
+
+  if(is.null(categories)){
+    categories <- tibble::tibble(category = unique(x[!is.na(x)]),
+                         label = unique(x[!is.na(x)]))
+  }
+
   stats <- NULL
   if(!skip_stats){
     summary <- table(x,useNA = "always") %>%
       tibble::as_tibble() %>%
-      dplyr::mutate(dist = n/sum(n), names = c(nms, NA)) %>%
+      dplyr::mutate(dist = n/sum(n)) %>%
       dplyr::rename(category = x)
+    if(!all(is.na(x))){
+      summary_no_na <- table(x,useNA = "no") %>%
+        tibble::as_tibble() %>%
+        dplyr::mutate(dist_no_na = n/sum(n)) %>%
+        dplyr::rename(category = x) |>
+        dplyr::select(-n)
+    } else{
+      summary_no_na <- tibble::tibble(category = character(0),
+                                      dist_no_na = numeric(0))
+    }
+    summary <- dplyr::left_join(summary, summary_no_na, by = "category")
     stats <- list(
       n_unique = length(unique(x[!is.na(x)])),
       n_na = sum(is.na(x)),
@@ -17,17 +34,28 @@ new_Cat <- function(x = character(), categories = NULL,
       summary = summary
     )
   }
-  default_spec <- "Title Case" #lowercase TITLECASE
-  names(categories) <- makeup::makeup_chr(categories,
-                                          sample = default_spec)
+
+  # Set label spec
+  categories <- categories |>
+    dplyr::mutate(label = set_cat_spec(label, spec = spec))
+
 
   vctrs::new_vctr(x,
-                  format = list(categories = unname(categories),
-                            n_categories = length(categories),
-                            spec = default_spec,
-                            labels = names(categories)),
+                  format = list(categories = categories,
+                            n_categories = length(categories$category),
+                            spec = spec),
            stats = stats, class = "hd_Cat")
 }
+
+set_cat_spec <- function(x, spec = NULL){
+  spec <- spec %||% "Title Case"
+  available_Cat_specs <- c("Title Case", "lowercase", "UPPERCASE")
+  if(!spec %in% available_Cat_specs){
+    stop("Spec not defined. Available Chk spec: ", available_Cat_specs)
+  }
+  makeup::makeup(x, sample = spec)
+}
+
 
 
 #' @title Category Vectors
@@ -46,10 +74,11 @@ new_Cat <- function(x = character(), categories = NULL,
 #' attr(cats, "categories")
 #'
 #' @export
-Cat <- function(x = character(), categories = NULL, skip_stats = FALSE) {
+Cat <- function(x = character(), categories = NULL,
+                spec = NULL, skip_stats = FALSE) {
   # x <- vctrs::vec_cast(x, character())
   x <- as.character(x)
-  new_Cat(x, categories = categories, skip_stats = skip_stats)
+  new_Cat(x, categories = categories, spec = spec, skip_stats = skip_stats)
 }
 
 #' @title Category Vectors
