@@ -4,7 +4,7 @@
 \alias{Cat}
 \title{Category Vectors}
 \usage{
-Cat(x = character(), categories = NULL, skip_stats = FALSE)
+Cat(x = character(), categories = NULL, spec = NULL, skip_stats = FALSE)
 }
 \arguments{
 \item{x}{object to be created as Cat type}
