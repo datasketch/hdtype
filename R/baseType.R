@@ -1,12 +1,12 @@
 
 #' @export
-as_base_type <- function(x){
+as_basetype <- function(x){
   ## TODO Cat as factors???
-  UseMethod("as_base_type")
+  UseMethod("as_basetype")
 }
 
 #' @export
-as_base_type.default <- function(x){
+as_basetype.default <- function(x){
 
   if(is_Dat(x)) return(as.Date(x))
   vctrs::vec_data(x)
