@@ -8,7 +8,7 @@ as_basetype <- function(x){
 #' @export
 as_basetype.default <- function(x){
   if(is_Dat(x)) return(as.Date(x))
-  if(isDate(x)) return(x)
+  if(lubridate::is.Date(x)) return(x)
   vctrs::vec_data(x)
 }
 

@@ -7,4 +7,6 @@ test_that("base_type", {
   expect_true(isDate(date))
   expect_true(lubridate::is.Date(as_basetype(dat1)))
 
+  as_basetype(Cat("2032"))
+
 })
