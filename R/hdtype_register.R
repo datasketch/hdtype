@@ -5,6 +5,8 @@ create_hdtype <- function(id, from = NULL, ...){
   # id <- "Kat"
   # from <- "Cat"
 
+  # https://stackoverflow.com/questions/3094232/add-objects-to-package-namespace
+
   # Assign constructor
   fun <- get(paste0("new_", from))
   body(fun) <- patch_hd_class(fun, from, id, prefix = "hd_")

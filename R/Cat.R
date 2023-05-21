@@ -132,7 +132,10 @@ vec_ptype2.hd_Cat.default <- function(x, y, ..., x_arg = "x", y_arg = "y") {
 #' @export
 vec_ptype2.hd_Cat.hd_Cat <- function(x, y, ...) new_Cat()
 
+
+
 # Cat and character return double
+# Make sure they return the same
 
 #' @method vec_ptype2.hd_Cat character
 #' @export
@@ -141,6 +144,11 @@ vec_ptype2.hd_Cat.character <- function(x, y, ...) character()
 #' @method vec_ptype2.character hd_Cat
 #' @export
 vec_ptype2.character.hd_Cat <- function(x, y, ...) character()
+
+
+# We can check that we’ve implemented this correctly with
+# vec_ptype_show(new_Cat(), character(), new_Cat())
+
 
 # Casting
 
