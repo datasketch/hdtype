@@ -14,8 +14,18 @@
 #' is_hdvector(x)
 #'
 #' @export
-is_hdvector <- function(x){
+is_hdvector <- function(x, strict = TRUE){
   av_types <- paste0("hd_",available_hdtypes())
   hd_class <- class(x)[grepl("hd_", class(x))]
-  hd_class %in% av_types
+  if(length(hd_class) == 0){
+    if(strict){
+      return(FALSE)
+    } else{
+      is.vector(x)
+    }
+  }else{
+    return(hd_class %in% av_types)
+  }
 }
+
+
