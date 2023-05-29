@@ -33,32 +33,42 @@ test_that("Test guess", {
   expect_equal(guess_hdtype(c("30%", "200%", NA)), hdtype("Pct"))
 
   # Guess Dat
-  # v <- c("2020-04-04", NA)
-  # isDate(v)
-  # expect_equal(guess_hdtype(v), hdtype("Dat"))
-  #
-  # v <- "24/06/2020"
-  # expect_true(isDate(v))
-  # expect_equal(guess_hdtype(v), hdtype("Dat"))
-  #
-  # v <- "24/6/2020"
-  # expect_true(isDate(v))
-  # expect_equal(guess_hdtype(v), hdtype("Dat"))
-  #
-  # h <- Dat(v)
-  # attributes(h)$format
-  #
+  v <- c("2020-04-04", NA)
+  isDate(v)
+  expect_equal(guess_hdtype(v), hdtype("Dat"))
+
+  v <- "24/06/2020"
+  expect_true(isDate(v))
+  expect_equal(guess_hdtype(v), hdtype("Dat"))
+
+  v <- "24/6/2020"
+  expect_true(isDate(v))
+  expect_equal(guess_hdtype(v), hdtype("Dat"))
+
+  h <- Dat(v)
+  attributes(h)$format
+
+  # # TODO
   # v <- c("25/03/2020","31/03/2020","06/04/2020","17/04/2020")
+  # isDate(v)
   # expect_true(isDate(v))
   #
-  # d <- tibble::tibble(x = "24/06/2020",
-  #                     y = "2020/12/31",
-  #                     z = "2020:05:20")
-  # expect_equal(as.character(guess_frType(d)),"Dat-Dat-Dat")
-  # f <- fringe(d)
-  # expect_equal(attributes(f$data[[1]])$format, "%d/%m/%Y")
-  # expect_equal(attributes(f$data[[2]])$format, "%Y/%m/%d")
-  # expect_equal(attributes(f$data[[3]])$format, "%Y:%m:%d")
+  # v <- c("03/30/2020","1/05/2020","06/04/2020","7/04/2020")
+  # Dat(v)
+  # isDate(v)
+  # expect_true(isDate(v))
+
+
+  v <- "24/06/2020"
+  expect_equal(guess_hdtype(v), hdtype("Dat"))
+  expect_equal(attributes(Dat(v))$format$date_format, "%d/%m/%Y")
+
+  v <- "2020/12/31"
+  expect_equal(guess_hdtype(v), hdtype("Dat"))
+  expect_equal(attributes(Dat(v))$format$date_format, "%Y/%m/%d")
+  v <- "2020:05:20"
+  expect_equal(guess_hdtype(v), hdtype("Dat"))
+  expect_equal(attributes(Dat(v))$format$date_format, "%Y:%m:%d")
 
 
   # v <- c("2014-03-01","2043-04-04","2014-04-04")
