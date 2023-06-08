@@ -4,7 +4,7 @@
 \alias{is_hdvector}
 \title{Check if x is an hdvector}
 \usage{
-is_hdvector(x)
+is_hdvector(x, strict = TRUE)
 }
 \arguments{
 \item{x}{hdtype object to be coerced or tested}

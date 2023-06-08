@@ -13,6 +13,7 @@ new_Txt <- function(x = character(),
   vctrs::new_vctr(x, stats = stats, class = "hd_Txt")
 }
 
+#' @export
 Txt <- function(x = character(), skip_stats = FALSE) {
   x <- vctrs::vec_cast(x, character())
   new_Txt(x, skip_stats = skip_stats)

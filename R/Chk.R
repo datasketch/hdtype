@@ -7,7 +7,6 @@ new_Chk <- function(x = character(),
   vctrs::vec_assert(x, logical())
   nms <- names(x)
   stats <- NULL
-  stats <- NULL
   if(!skip_stats){
     summary <- table(x,useNA = "always") %>%
       tibble::as_tibble() %>%
@@ -28,14 +27,13 @@ new_Chk <- function(x = character(),
       summary = summary
     )
   }
-  if(is.null(labels)){
-    default_spec <- "bool"
-    value_labels <- set_chk_labels(x)
-    values <- tibble::tibble(value = x,
-                             label = value_labels)
-  }else{
-
+  default_spec <- "bool"
+  if(!is.null(spec)){
+    default_spec <- spec
   }
+  value_labels <- set_chk_labels(x, spec = spec, labels = labels)
+  values <- tibble::tibble(value = x,
+                           label = value_labels)
   vctrs::new_vctr(x,
                   format = list(values = values,
                                 n_categories = 2,
@@ -44,11 +42,14 @@ new_Chk <- function(x = character(),
                   class = "hd_Chk")
 }
 
-set_chk_labels <- function(x, spec = "bool", labels = NULL){
+set_chk_labels <- function(x, spec = NULL, labels = NULL){
 
+  spec <- spec %||% "bool"
   available_Chk_specs <- c("bool", "yesno", "emoji1", "emoji2", "unicode1", "unicode2")
-  if(!spec %in% available_Chk_specs){
-    stop("Spec not defined. Available Chk spec: ", available_Chk_specs)
+  if(!is.null(spec)){
+    if(!spec %in% available_Chk_specs){
+      stop("Spec not defined. Available Chk spec: ", available_Chk_specs)
+    }
   }
   chk_specs <- tibble::tribble(
     ~value, ~bool, ~yesno, ~emoji1, ~emoji2, ~unicode1, ~unicode2,
@@ -69,10 +70,10 @@ set_chk_labels <- function(x, spec = "bool", labels = NULL){
 
 
 #' @export
-Chk <- function(x = character(), categories = NULL, skip_stats = FALSE) {
+Chk <- function(x = character(), spec = NULL, labels = NULL, skip_stats = FALSE) {
   # x <- vctrs::vec_cast(x, character())
-  x <- as.character(x)
-  new_Chk(x, categories = categories, skip_stats = skip_stats)
+  x <- as.logical(x)
+  new_Chk(x, spec = spec, labels = labels, skip_stats = skip_stats)
 }
 
 #' @export
@@ -86,7 +87,7 @@ is_Chk <- function(x) {
 
 #' @export
 format.hd_Chk <- function(x, ...) {
-  sprintf(fmt = "%s", x)
+  attr(x,"format")$values$label
 }
 
 #' @export
@@ -157,6 +158,14 @@ vec_cast.character.hd_Chk <- function(x, to, ...) vctrs::vec_data(x)
 as_Chk <- function(x) {
   vctrs::vec_cast(x, new_Chk())
 }
+
+
+#' @export
+Chk_labels <- function(x){
+  if(!is_Chk(x)) stop("x must be a Chk")
+  attr(x,"format")$values$label
+}
+
 
 
 #' @export
