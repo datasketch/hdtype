@@ -18,7 +18,6 @@ Imports:
     tibble,
     dplyr,
     lubridate,
-    magrittr (>= 1.5),
     dstools (>= 0.1.0),
     makeup,
     readr,

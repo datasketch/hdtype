@@ -8,18 +8,22 @@ new_Chk <- function(x = character(),
   nms <- names(x)
   stats <- NULL
   if(!skip_stats){
-    summary <- table(x,useNA = "always") %>%
-      tibble::as_tibble() %>%
-      dplyr::mutate(dist = n/sum(n)) %>%
-      dplyr::rename(value = x) |>
-      dplyr::mutate(value = as.logical(value))
-    summary_no_na <- table(x,useNA = "no") %>%
-      tibble::as_tibble() %>%
-      dplyr::mutate(dist_no_na = n/sum(n)) %>%
-      dplyr::rename(value = x) |>
-      dplyr::mutate(value = as.logical(value)) |>
-      dplyr::select(-n)
-    summary <- dplyr::left_join(summary, summary_no_na, by = "value")
+    summary <- table(x,useNA = "always") |>
+      tibble::as_tibble() |>
+      dplyr::mutate(dist = n/sum(n)) |>
+      dplyr::rename(category = x)
+    if(!all(is.na(x))){
+      summary_no_na <- table(x,useNA = "no") |>
+        tibble::as_tibble() |>
+        dplyr::mutate(dist_no_na = n/sum(n)) |>
+        dplyr::rename(category = x) |>
+        dplyr::select(-n)
+    } else{
+      summary_no_na <- tibble::tibble(category = character(0),
+                                      dist_no_na = numeric(0))
+    }
+    summary <- dplyr::left_join(summary, summary_no_na, by = "category") |>
+      dplyr::mutate(category = as.logical(category))
     stats <- list(
       n_unique = length(unique(x[!is.na(x)])),
       n_na = sum(is.na(x)),

@@ -6,9 +6,9 @@ new_Gcd <- function(x = character(), categories = NULL,
   nms <- names(x)
   stats <- NULL
   if(!skip_stats){
-    stats <- table(x,useNA = "always") %>%
-      tibble::as_tibble() %>%
-      dplyr::mutate(dist = n/sum(n), names = c(nms, NA)) %>%
+    stats <- table(x,useNA = "always") |>
+      tibble::as_tibble()  |>
+      dplyr::mutate(dist = n/sum(n), names = c(nms, NA))  |>
       dplyr::rename(category = x)
   }
   vctrs::new_vctr(x, categories = categories,

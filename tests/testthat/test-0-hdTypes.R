@@ -106,7 +106,7 @@ test_that("All hdtypes have format and stats",{
 #     d = Num(runif(2)*10),
 #     e = Pct(runif(2))
 #   )
-#   data_str <- readr::write_csv(data,"test.csv") %>% tibble::as_tibble()
+#   data_str <- readr::write_csv(data,"test.csv") |>  tibble::as_tibble()
 #   str(data_str)
 #   test <- readr::read_csv("test.csv",
 #                           col_types = readr::cols(.default = "c"))

@@ -12,14 +12,14 @@ new_Cat <- function(x = character(),
 
   stats <- NULL
   if(!skip_stats){
-    summary <- table(x,useNA = "always") %>%
-      tibble::as_tibble() %>%
-      dplyr::mutate(dist = n/sum(n)) %>%
+    summary <- table(x,useNA = "always") |>
+      tibble::as_tibble() |>
+      dplyr::mutate(dist = n/sum(n)) |>
       dplyr::rename(category = x)
     if(!all(is.na(x))){
-      summary_no_na <- table(x,useNA = "no") %>%
+      summary_no_na <- table(x,useNA = "no") |>
         tibble::as_tibble() %>%
-        dplyr::mutate(dist_no_na = n/sum(n)) %>%
+        dplyr::mutate(dist_no_na = n/sum(n))  |>
         dplyr::rename(category = x) |>
         dplyr::select(-n)
     } else{

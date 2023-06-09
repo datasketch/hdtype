@@ -28,7 +28,7 @@
 #'
 #' castable_ctype <- function(ctype){
 #'   cc <- castable_hdtypes()
-#'   cc %>% dplyr::filter(from == ctype) %>% dplyr::pull()
+#'   cc %>% dplyr::filter(from == ctype) |>  dplyr::pull()
 #' }
 #'
 #' cast_ctype <- function(from, to,...){

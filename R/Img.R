@@ -9,6 +9,7 @@ new_Img <- function(x = character()){
   vctrs::new_vctr(x, format = format, class = "hd_Img")
 }
 
+#' @export
 Img <- function(x = character()) {
   x <- vctrs::vec_cast(x, character())
   new_Img(x)

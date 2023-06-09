@@ -6,8 +6,8 @@ new_Gnm <- function(x = character(), categories = NULL,
   nms <- names(x)
   stats <- NULL
   if(!skip_stats){
-    stats <- table(x,useNA = "always") %>%
-      tibble::as_tibble() %>%
+    stats <- table(x,useNA = "always") |>
+      tibble::as_tibble()  |>
       dplyr::mutate(dist = n/sum(n), names = c(nms, NA)) %>%
       dplyr::rename(category = x)
   }

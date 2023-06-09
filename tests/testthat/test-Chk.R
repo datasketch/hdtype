@@ -13,7 +13,7 @@ test_that("multiplication works", {
   attr(check, "values")
 
 
-  expect_equal(attr(check,"stats")$summary$value, c(FALSE, TRUE, NA))
+  expect_equal(attr(check,"stats")$summary$category, c(FALSE, TRUE, NA))
   expect_equal(attr(check,"stats")$summary$n[2], 2)
   expect_equal(attr(check,"stats")$n_unique, 2)
   expect_equal(attr(check,"format")$n_categories, 2)
@@ -32,5 +32,8 @@ test_that("multiplication works", {
   x <- Chk(TRUE, spec = "emoji1")
   attr(x,"format")$values
   expect_equal(Chk_labels(x), "✔️")
+
+  x <- NA
+  expect_true(is.na(Chk(x)))
 
 })

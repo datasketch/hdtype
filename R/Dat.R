@@ -15,9 +15,9 @@ new_Dat <- function(x = character(), format = NULL,
   nms <- names(x)
   stats <- NULL
   if(!skip_stats){
-    summary <- table(x,useNA = "always") %>%
-      tibble::as_tibble() %>%
-      dplyr::mutate(dist = n/sum(n), names = c(nms, NA)) %>%
+    summary <- table(x,useNA = "always") |>
+      tibble::as_tibble() |>
+      dplyr::mutate(dist = n/sum(n), names = c(nms, NA))  |>
       dplyr::rename(category = x)
     stats <- list(
       n_unique = length(unique(x)),

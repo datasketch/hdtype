@@ -10,8 +10,8 @@ new_Seq <- function(x = character(), categories = NULL,
   }
   stats <- NULL
   if(!skip_stats){
-    stats <- table(x,useNA = "always") %>%
-      tibble::as_tibble() %>%
+    stats <- table(x,useNA = "always") |>
+      tibble::as_tibble() |>
       dplyr::mutate(dist = n/sum(n), names = c(nms, NA)) %>%
       dplyr::rename(category = x)
   }
@@ -20,6 +20,7 @@ new_Seq <- function(x = character(), categories = NULL,
            stats = stats, class = "hd_Seq")
 }
 
+#' @export
 Seq <- function(x = character(), order = NULL,
                 categories = NULL, skip_stats = FALSE) {
   # x <- vctrs::vec_cast(x, character())
