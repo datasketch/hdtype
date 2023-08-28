@@ -19,5 +19,6 @@ NULL
 
 ## usethis namespace: start
 #' @importFrom dstools %||%
+#' @importFrom vctrs vec_cast
 ## usethis namespace: end
 NULL
