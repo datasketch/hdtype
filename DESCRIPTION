@@ -13,9 +13,9 @@ Encoding: UTF-8
 BugReports: https://github.com/datasketch/hdtype/issues
 Depends:
     R (>= 4.2),
-    vctrs
 Imports: 
     tibble,
+    vctrs,
     dplyr,
     lubridate,
     dstools (>= 0.1.0),
