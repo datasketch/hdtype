@@ -94,12 +94,18 @@ maybeNum <- function(v){
 }
 
 has_decimal_comma <- function(v){
-  v0 <- gsub("[0-9\\.]","", v)
-  v1 <- gsub("-", "", v0)
-  #has_commas <- grepl(",",v0)
-  has_other_punct <- grepl("([-])|[[:punct:]]", gsub(",","", v1))
-  if(any(has_other_punct)) return(FALSE)
-  TRUE
+
+  has_commas <- any(grepl(",", v))
+  # Check if has commas
+  if(has_commas){
+    v0 <- gsub("[0-9\\.]","", v)
+    v1 <- gsub("-", "", v0)
+    #has_commas <- grepl(",",v0)
+    has_other_punct <- grepl("([-])|[[:punct:]]", gsub(",","", v1))
+    if(any(has_other_punct)) return(FALSE)
+    return(TRUE)
+  }
+  FALSE
 }
 
 

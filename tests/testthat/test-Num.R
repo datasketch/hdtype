@@ -62,6 +62,25 @@ test_that("Num",{
   expect_true(has_decimal_comma(x))
   expect_true(is_Num(Num(x)))
 
+  x <- c("0.4354", "0.123", NA)
+  expect_equal(guess_hdtype(x), hdtype("Num"))
+  expect_false(has_decimal_comma(x))
+  expect_equal(as_basetype(Num(x)), c(0.4354, 0.1230, NA))
+
+})
+
+test_that("has_decimal_comma_works", {
+
+  v <- c("4,59", "5,38", "10,78", NA, "2")
+  expect_true(has_decimal_comma(v))
+
+  v <- c("343.755,08", "5.380,00", NA, "21.555,11", "1.550.000")
+  expect_true(has_decimal_comma(v))
+
+  v <- c("0.4354", "0.123", NA)
+  expect_false(has_decimal_comma(v))
+
+
 })
 
 

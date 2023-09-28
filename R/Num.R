@@ -47,8 +47,9 @@ Num <- function(x = double()) {
   if(is.character(x)){
     if(has_decimal_comma(x)){
       x <- gsub("\\.","", x)
-      x <- as.numeric(gsub(",",".", x))
+      x <- gsub(",",".", x)
     }
+    x <- as.numeric(x)
   }
   x <- vctrs::vec_cast(x, double())
   new_Num(x)
