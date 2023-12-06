@@ -9,8 +9,8 @@ new_Num <- function(x, skip_stats = FALSE){
       n_unique = length(unique(x)),
       n_na = sum(is.na(x)),
       pct_na = sum(is.na(x))/length(x),
-      min = min(x, na.rm = TRUE),
-      max = max(x, na.rm = TRUE)
+      min = ifelse(all(is.na(x)), NA, min(x, na.rm = TRUE)),
+      max = ifelse(all(is.na(x)), NA, max(x, na.rm = TRUE))
     )
   }
 

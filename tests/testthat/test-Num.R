@@ -3,6 +3,7 @@ test_that("Num",{
 
   Num()
 
+  Num(NA)
 
   x <- new_Num(c(seq(0, 1, length.out = 4), NA))
   x
@@ -81,9 +82,8 @@ test_that("has_decimal_comma_works", {
   expect_false(has_decimal_comma(v))
 
 
+
 })
-
-
 
 
 # new_percent <- function(x = double()) {

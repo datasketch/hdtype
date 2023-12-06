@@ -84,3 +84,17 @@ test_that("Test guess", {
   # parseDatetime(v, "H")
 
 })
+
+test_that("Guess list types", {
+
+  v <- list(letters[1:3], "b", letters[5:7], "e")
+  expect_equal(guess_hdtype(v), "Cats")
+
+  v <- list(NA, 1:3, 2, 5:7, 5, NA, double(0))
+  expect_equal(guess_hdtype(v), "Nums")
+
+
+})
+
+
+

@@ -3,9 +3,11 @@ NUT,Null,0,1
 UKT,Unknown,0,1
 Uid,Uid,1,1
 Cat,Categorical,5,1
+Cats,Categoricals,5,1
 Bin,Binary,3,1
 Seq,Sequential,3,1
 Num,Numeric,5,1
+Nums,Numeric List,5,1
 Pct,Percentage,2,1
 Clr,Color,1,1
 Chk,Check,1,1
@@ -24,6 +26,7 @@ Sec,Seconds,1,0
 Hie,Hierarchy,1,0
 Grp,Group,1,0
 Txt,Text,1,1
+Txts,Texts,1,1
 Cur,Currency,1,0
 Gnm,Geo name,1,1
 Gcd,Geo code,1,1

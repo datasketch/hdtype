@@ -30,6 +30,14 @@ guess_hdtype <- function(v){
     return(hdtype(which_hdtype(v)))
   }
 
+  if(is.list(v)){
+    hdtypes <- unique(purrr::map_chr(v, guess_hdtype))
+    hdtypes <- hdtypes[!hdtypes %in% c("UKT", "NUT")]
+    if(hdtypes == "Num") return("Nums")
+    if(hdtypes == "Cat") return("Cats")
+    return("Txts")
+  }
+
   if(length(v) == 0){
     return(hdtype("NUT"))
   }
