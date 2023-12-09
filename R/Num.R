@@ -43,7 +43,7 @@ new_Num <- function(x, skip_stats = FALSE){
 #' attr(num, "stats")
 #'
 #' @export
-Num <- function(x = double()) {
+Num <- function(x = double(), skip_stats = FALSE) {
   if(is.character(x)){
     if(has_decimal_comma(x)){
       x <- gsub("\\.","", x)
@@ -52,7 +52,7 @@ Num <- function(x = double()) {
     x <- as.numeric(x)
   }
   x <- vctrs::vec_cast(x, double())
-  new_Num(x)
+  new_Num(x, skip_stats = skip_stats)
 }
 
 #' @title Numeric Vectors

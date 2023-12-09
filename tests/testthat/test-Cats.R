@@ -5,6 +5,12 @@ test_that("Num Lists work", {
   xs <- Cats(x)
   d <- tibble::tibble(a = 1:4, nums = xs)
 
-  d
+  x <- rep(list("Unique"), 500)
+  xs <- Cats(x)
 
+  x <- rep(NA, 10)
+  xs <- Cats(x)
+
+  x <- as.list(rep(NA, 10))
+  Cats(x)
 })

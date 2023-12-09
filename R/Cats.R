@@ -1,8 +1,9 @@
 
 #' @export
 Cats <- function(x){
+  if(all(is.na(x)) & !is.list(x)) x <- as.list(x)
   xs <- vctrs::as_list_of(x, .ptype = character())
-  xs <- purrr::map(xs, Cat)
+  xs <- purrr::map(xs, Cat, skip_stats = TRUE)
   xs
 }
 

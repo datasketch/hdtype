@@ -1,8 +1,9 @@
 
 #' @export
-Nums <- function(x){
+Nums <- function(x, skip_stats = TRUE){
+  if(all(is.na(x)) & !is.list(x)) x <- as.list(x)
   xs <- vctrs::as_list_of(x, .ptype = double())
-  xs <- purrr::map(xs, Num)
+  xs <- purrr::map(xs, Num, skip_stats = TRUE)
   xs
 }
 
