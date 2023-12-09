@@ -4,7 +4,7 @@
 \alias{Num}
 \title{Numeric Vectors}
 \usage{
-Num(x = double())
+Num(x = double(), skip_stats = FALSE)
 }
 \arguments{
 \item{x}{object to be created as Num type}

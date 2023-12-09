@@ -66,6 +66,7 @@ test_that("Num",{
   x <- c("0.4354", "0.123", NA)
   expect_equal(guess_hdtype(x), hdtype("Num"))
   expect_false(has_decimal_comma(x))
+  x <- Num(x)
   expect_equal(as_basetype(Num(x)), c(0.4354, 0.1230, NA))
 
 })

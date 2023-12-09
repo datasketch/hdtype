@@ -100,13 +100,13 @@ as_Img <- function(x) {
 
 #' @export
 Img_format <-  function(x){
-  if(!is_Pct(x)) stop("x must be a Pct")
+  if(!is_Img(x)) stop("x must be an Img")
   attr(x, "format")
 }
 
 #' @export
 Img_stats <-  function(x){
-  if(!is_Pct(x)) stop("x must be a Pct")
+  if(!is_Img(x)) stop("x must be a Img")
   attr(x, "stats")
 }
 

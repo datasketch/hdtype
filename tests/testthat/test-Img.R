@@ -8,10 +8,16 @@ test_that("Cat", {
   expect_equal(attr(imgs,"format"), "png")
 
   imgs
+  as_basetype(imgs)
+
+  Img_stats(imgs)
+  expect_equal(Img_format(imgs), "png")
+
   as.character(imgs)
 
   #Img(NULL)
   Img(NA)
+
 
   # Does not accepts pics without extensions
   y <- c("1","0.XXX")

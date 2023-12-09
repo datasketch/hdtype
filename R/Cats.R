@@ -9,6 +9,7 @@ Cats <- function(x){
 
 #' @export
 is_Cats <- function(x){
+  if(!is.list(x)) return(FALSE)
   all(purrr::map_lgl(x, is_Cat))
 }
 

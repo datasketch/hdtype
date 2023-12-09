@@ -1,6 +1,7 @@
 
 #' @export
 Nums <- function(x, skip_stats = TRUE){
+  if(is_Num(x)) return(FALSE)
   if(all(is.na(x)) & !is.list(x)) x <- as.list(x)
   xs <- vctrs::as_list_of(x, .ptype = double())
   xs <- purrr::map(xs, Num, skip_stats = TRUE)
@@ -9,6 +10,7 @@ Nums <- function(x, skip_stats = TRUE){
 
 #' @export
 is_Nums <- function(x){
+  if(!is.list(x)) return(FALSE)
   all(purrr::map_lgl(x, is_Num))
 }
 

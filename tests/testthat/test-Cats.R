@@ -8,9 +8,14 @@ test_that("Num Lists work", {
   x <- rep(list("Unique"), 500)
   xs <- Cats(x)
 
+  as_basetype(xs)
+
   x <- rep(NA, 10)
   xs <- Cats(x)
 
   x <- as.list(rep(NA, 10))
   Cats(x)
+
+
+
 })
