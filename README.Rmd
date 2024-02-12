@@ -47,7 +47,7 @@ devtools::install_github("datasketch/hdtype")
 
 ## Usage
 
-```
+```{R message = FALSE, warning = FALSE}
 
 #Load the hdtype package from Github.
 
@@ -63,7 +63,7 @@ library(vctrs)
 ## Examples
 
 #### hd_Num Object
-```
+```{R}
 
 #Creation hd_Num object
 
@@ -82,7 +82,7 @@ print(summary_stats)
 
 #### hd_Bin Object
 
-```
+```{R}
 #Creation hd_Bin object
 
 bin_data <- c("Yes", "No", "Yes", "Yes", "No")
@@ -105,7 +105,7 @@ print(n_categories)
 
 #### hd_Dat Object 
 
-```
+```{R}
 # Creation hd_Dat object
 date_data <- c("2022-01-01", "2022-01-15", "2022-02-01", NA, "2022-02-15")
 date <- Dat(date_data)
@@ -123,7 +123,9 @@ print(format)
 
 #### hd_Seq Object
 
-```
+```{R}
+library(hdtype)
+library(vctrs)
 
 datos_secuenciales_char <- c("A", "B", "A", "C", "B", "C")
 
